@@ -18,10 +18,10 @@ jobs:
   rsync:
     runs-on: ubuntu-latest
     steps:
-      # Must checkout first, otherwise would get empty folder, see https://github.com/actions/checkout
+      # checkout https://github.com/actions/checkout
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
-      # Modify `master` to valid version, from https://github.com/marketplace/actions/action-rsync
+      # from https://github.com/marketplace/actions/action-rsync
       - name: 🚀 RSYNC Deploy
         uses: up9cloud/action-rsync@master
         env:
