@@ -31,6 +31,4 @@ jobs:
           PORT: ${{secrets.DEPLOY_SSH_PORT}}
           TARGET: ${{secrets.DEPLOY_SSH_TARGET}}
           PRE_SCRIPT: "echo start at: && date -u"
-          POST_SCRIPT:
-            "chown -R www-data:www-data ."
-            "echo done at: && date -u"
+          POST_SCRIPT: "chown -R www-data:www-data . && echo done at: && date -u"
