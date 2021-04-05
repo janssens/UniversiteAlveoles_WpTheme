@@ -20,12 +20,12 @@ add_filter( 'woocommerce_default_address_fields' , 'aveloles_override_default_ad
 
 // gjanssens : Do not autofill field needed for shipping comute
 function aveloles_override_default_address_fields( $address_fields ) {
-    $address_fields['billing_postcode']['required'] = false;
-    $address_fields['billing_city']['required'] = false;
-    $address_fields['billing_country']['required'] = false;
-    $address_fields['shipping_postcode']['required'] = false;
-    $address_fields['shipping_city']['required'] = false;
-    $address_fields['shipping_country']['required'] = false;
+    $address_fields['billing_postcode']['attr']['autocomplete'] = 'off';
+    $address_fields['billing_city']['attr']['autocomplete'] = 'off';
+    $address_fields['billing_country']['attr']['autocomplete'] = 'off';
+    $address_fields['shipping_postcode']['attr']['autocomplete'] = 'off';
+    $address_fields['shipping_city']['attr']['autocomplete'] = 'off';
+    $address_fields['shipping_country']['attr']['autocomplete'] = 'off';
 
     return $address_fields;
 }
