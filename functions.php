@@ -18,14 +18,19 @@ add_action( 'event_tickets_after_save_ticket', function( $post_id, $ticket ) {
 // Hook in
 add_filter( 'woocommerce_default_address_fields' , 'aveloles_override_default_address_fields' );
 
-// gjanssens : Do not autofill field needed for shipping comute
 function aveloles_override_default_address_fields( $address_fields ) {
-    $address_fields['billing_postcode']['attr']['autocomplete'] = 'off';
-    $address_fields['billing_city']['attr']['autocomplete'] = 'off';
-    $address_fields['billing_country']['attr']['autocomplete'] = 'off';
-    $address_fields['shipping_postcode']['attr']['autocomplete'] = 'off';
-    $address_fields['shipping_city']['attr']['autocomplete'] = 'off';
-    $address_fields['shipping_country']['attr']['autocomplete'] = 'off';
-
     return $address_fields;
+}
+
+add_action('woocommerce_after_checkout_form', 'insert_my_js_uprs');
+function insert_my_js_uprs() {
+    ?>
+    <script>
+        jQuery(document).ready(function($){
+            jQuery('#billing_postcode,#billing_city').live('focus',function($){
+                $(this).attr('autocomplete', 'off');
+            });
+        });
+    </script>
+    <?php
 }
