@@ -27,9 +27,7 @@ function insert_my_js_uprs() {
     ?>
     <script>
         jQuery(document).ready(function($){
-            jQuery('#billing_postcode,#billing_city').live('focus',function($){
-                $(this).attr('autocomplete', 'off');
-            });
+            jQuery('#billing_postcode,#billing_city').attr('autocomplete', 'off');
         });
     </script>
     <?php
