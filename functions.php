@@ -32,3 +32,22 @@ function insert_my_js_uprs() {
     </script>
     <?php
 }
+// Hook for invoice
+add_filter( 'woocommerce_get_order_item_totals' , 'aveloles_wc_get_order_item_totals', 10 , 3 );
+
+function aveloles_wc_get_order_item_totals( $total_rows, $order, $tax_display ) {
+    // advise on taxe
+    if ($tax_display === 'excl'){
+        $total_rows['cart_subtotal']['label'] .= '(HT)';
+        // say shipping is ttc
+        $total_rows['shipping']['label'] .= '(HT)';
+    }else{
+        $total_rows['cart_subtotal']['label'] .= '(TTC)';
+        // say shipping is ttc
+        $total_rows['shipping']['label'] .= '(TTC)';
+    }
+    // say total is ttc
+    $total_rows['order_total']['label'] .= 'TTC';
+
+    return $total_rows;
+}
